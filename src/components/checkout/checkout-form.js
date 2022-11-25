@@ -206,7 +206,7 @@ const CheckoutForm = ({ countriesData }) => {
   };
 
   return (
-    <main class="pt-8">
+    <main className="container mx-auto py-10 px-4 sm:py-12 sm:px-6 lg:py-14 lg:px-8">
       <h1 className="text-gray-700 font-medium font-lato-bold text-3xl mb-8">
         Checkout Order
       </h1>

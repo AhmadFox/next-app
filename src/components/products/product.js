@@ -6,10 +6,9 @@ import { isEmpty } from "lodash";
 
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition, RadioGroup } from "@headlessui/react";
-import {
-  ExclamationTriangleIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { HeartSolid } from "../icons";
+
+import { HeartIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { StarIcon } from "@heroicons/react/20/solid";
 
 const productItem = {
@@ -44,6 +43,7 @@ function classNames(...classes) {
 
 const Product = ({ product }) => {
   const [open, setOpenModal] = useState(false);
+  const [wishlist, setWishlist] = useState(false);
 
   const cancelButtonRef = useRef(null);
 
@@ -57,13 +57,11 @@ const Product = ({ product }) => {
   const img = product?.images?.[0] ?? {};
   const productType = product?.type ?? "";
 
-  console.log("product===>", product);
-
   return (
     <div className="group relative">
       <div>
         <div>
-          <div className="relative group/item min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md   lg:h-80">
+          <div className="relative group/item min-h-80 w-full overflow-hidden rounded-md lg:h-80">
             <Image
               sourceUrl={img?.src ?? ""}
               altText={img?.alt ?? ""}
@@ -72,17 +70,34 @@ const Product = ({ product }) => {
               height="380"
               className="h-full w-full object-cover object-center lg:h-full lg:w-full"
             />
-            <div className="transition-all group invisible group-hover/item:visible group-hover/item:absolute w-full h-full flex items-center px-4">
+            <div className="transition-all group/item absolute top-0 z-10 w-full h-full p-4 flex items-center">
               <button
                 type="button"
-                className="transition-all relative z-10 w-full rounded-md bg-white bg-opacity-75 py-2 px-4 text-sm text-gray-900 opacity-0 focus:opacity-100 group-hover:opacity-100"
+                className="w-full transition-all rounded-md bg-white opacity-0 group-hover/item:opacity-80 -mb-10 group-hover/item:-mb-0 py-2 px-4 text-sm text-gray-900"
                 onClick={() => setOpenModal(true)}
               >
                 Quick View
               </button>
             </div>
+
+            <button
+              onClick={() => setWishlist(!wishlist)}
+              className="transition-all bg-white bg-opacity-80 hover:bg-opacity-100 p-2 rounded-full shadow-md block top-4 right-4 absolute z-10 h-10 w-10"
+            >
+              {wishlist == true ? (
+                <HeartSolid className="text-red-700 h-6 w-6 top-2" />
+              ) : (
+                <HeartIcon
+                  className="text-gray-700 h-6 w-6"
+                  aria-hidden="true"
+                />
+              )}
+            </button>
           </div>
-          <Link href={product?.permalink ?? "/"} className="block mt-3">
+          <Link
+            href={product ? "product/" + product.id : "/"}
+            className="block mt-3"
+          >
             <h3 className="text-lg mb-2 text-gray-700">
               {product?.name ?? ""}
             </h3>

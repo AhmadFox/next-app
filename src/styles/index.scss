@@ -3,7 +3,70 @@
 @import "~tailwindcss/utilities";
 
 @import "../fonts/fonts.scss";
+$teal-600: #0d9488;
+// html,
+// body,
+// #__next {
+//   height: 100%;
+// }
 
-@import "01-settings/typography";
-@import "03-components/elements/list";
-@import "03-components/layouts/footer";
+// #__next {
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// main {
+//   flex: 1 0 auto;
+// }
+
+.product-gallery .swiper-slide {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: (4 / 4) * 100%;
+  }
+  > img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.swiper-thumbs {
+  .swiper-slide {
+    opacity: 0.75;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+    &.swiper-slide-thumb-active {
+      opacity: 1;
+    }
+  }
+}
+
+.swiper-pagination {
+  position: static !important;
+  margin-top: 1rem;
+  .swiper-pagination-bullet-active {
+    background-color: $teal-600;
+  }
+}
+
+.social-icon {
+  svg {
+    transform: scale(1.5);
+  }
+  &:hover {
+    path {
+      transition: all 0.2s ease-in-out;
+      fill: $teal-600;
+    }
+  }
+}
+
+.bg-filter {
+  backdrop-filter: blur(15px);
+}

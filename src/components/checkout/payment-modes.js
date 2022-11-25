@@ -10,7 +10,7 @@ const PaymentModes = ({ input, handleOnChange }) => {
         <Error errors={errors} fieldName={"paymentMethod"} />
         {/*Direct bank transfers*/}
         <div className="form-check woo-next-payment-input-container mt-2">
-          <div class="flex items-center mr-4">
+          <div className="flex items-center mr-4">
             <input
               onChange={handleOnChange}
               id="bacs"
@@ -18,9 +18,12 @@ const PaymentModes = ({ input, handleOnChange }) => {
               value="bacs"
               name="paymentMethod"
               checked={"bacs" === paymentMethod}
-              class=""
+              className=""
             />
-            <label for="bacs" class="ml-2 text-sm font-medium text-gray-900">
+            <label
+              for="bacs"
+              className="ml-2 text-sm font-medium text-gray-900"
+            >
               Direct Bank Transfer
             </label>
           </div>
@@ -28,7 +31,7 @@ const PaymentModes = ({ input, handleOnChange }) => {
 
         {/*Pay with Paypal*/}
         <div className="form-check woo-next-payment-input-container mt-2">
-          <div class="flex items-center mr-4">
+          <div className="flex items-center mr-4">
             <input
               onChange={handleOnChange}
               id="paypal"
@@ -36,9 +39,12 @@ const PaymentModes = ({ input, handleOnChange }) => {
               value="paypal"
               name="paymentMethod"
               checked={"bacs" === paymentMethod}
-              class=""
+              className=""
             />
-            <label for="paypal" class="ml-2 text-sm font-medium text-gray-900">
+            <label
+              for="paypal"
+              className="ml-2 text-sm font-medium text-gray-900"
+            >
               Pay with Paypal
             </label>
           </div>
@@ -53,7 +59,7 @@ const PaymentModes = ({ input, handleOnChange }) => {
 			</div> */}
         {/*Pay with Stripe*/}
         <div className="form-check woo-next-payment-input-container mt-2">
-          <div class="flex items-center mr-4">
+          <div className="flex items-center mr-4">
             <input
               onChange={handleOnChange}
               id="cod"
@@ -61,9 +67,9 @@ const PaymentModes = ({ input, handleOnChange }) => {
               value="cod"
               name="paymentMethod"
               checked={"bacs" === paymentMethod}
-              class=""
+              className=""
             />
-            <label for="cod" class="ml-2 text-sm font-medium text-gray-900">
+            <label for="cod" className="ml-2 text-sm font-medium text-gray-900">
               Cash on Delivery
             </label>
           </div>
@@ -81,7 +87,7 @@ const PaymentModes = ({ input, handleOnChange }) => {
 				</label>
 			</div> */}
         <div className="form-check woo-next-payment-input-container mt-2">
-          <div class="flex items-center mr-4">
+          <div className="flex items-center mr-4">
             <input
               onChange={handleOnChange}
               id="stripe"
@@ -89,9 +95,12 @@ const PaymentModes = ({ input, handleOnChange }) => {
               value="stripe"
               name="paymentMethod"
               checked={"bacs" === paymentMethod}
-              class=""
+              className=""
             />
-            <label for="stripe" class="ml-2 text-sm font-medium text-gray-900">
+            <label
+              for="stripe"
+              className="ml-2 text-sm font-medium text-gray-900"
+            >
               Stripe
             </label>
           </div>

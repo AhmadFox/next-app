@@ -68,15 +68,26 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const Products = ({ products }) => {
+const Products = ({ products, childToParent }) => {
   if (isEmpty(products) || !isArray(products)) {
     return null;
   }
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
+  const Filter = [
+    {
+      min_price: 75,
+      max_price: 220,
+      category: 51,
+    },
+  ];
+
   return (
-    <main class="pt-8">
+    <main className="container mx-auto py-10 px-4 sm:py-12 sm:px-6 lg:py-14 lg:px-8">
+      <button primary onClick={() => childToParent(Filter)}>
+        Click Child
+      </button>
       {/* Mobile filter dialog */}
       <Transition.Root show={mobileFiltersOpen} as={Fragment}>
         <Dialog

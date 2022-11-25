@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useContext, useState, Fragment } from "react";
+import { useContext, useState, Fragment, useEffect } from "react";
 import { isEmpty } from "lodash";
 import { Dialog, Popover, Transition } from "@headlessui/react";
 import {
@@ -20,13 +20,23 @@ function classNames(...classes) {
 
 import { TailwindIcon } from "../../icons";
 import { AppContext } from "../../context";
+import TopPromoNav from "./top-promo-nav";
+import cx from "classnames";
 
-const Header = ({ header }) => {
+const Header = ({ header, homeNavBar }) => {
   const [open, setOpen] = useState(false);
   const [cart, setCart] = useContext(AppContext);
   const { headerMenuItems, siteLogoUrl, siteTitle, favicon } = header || {};
 
   const [isMenuVisible, setMenuVisibility] = useState(false);
+
+  /*
+   ** function for [ Home ] navbar
+   */
+  const homePageNavbarClass = cx({
+    "fixed z-10 bg-transparent w-full bg-filter": homeNavBar,
+    "bg-white shadow": !homeNavBar,
+  });
 
   return (
     <>
@@ -34,7 +44,7 @@ const Header = ({ header }) => {
         <title>{siteTitle || "Nexts WooCommerce"}</title>
         <link rel="icon" href={favicon || "/favicon.ico"} />
       </Head>
-      <div className="bg-white">
+      <nav className={homePageNavbarClass}>
         {/* Mobile menu */}
         <Transition.Root show={open} as={Fragment}>
           <Dialog
@@ -69,7 +79,7 @@ const Header = ({ header }) => {
                     <button
                       type="button"
                       className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
-                      onClick={() => setOpen(false)}
+                      onClick={() => setOpen(true)}
                     >
                       <span className="sr-only">Close menu</span>
                       <XMarkIcon className="h-6 w-6" aria-hidden="true" />
@@ -129,11 +139,9 @@ const Header = ({ header }) => {
           </Dialog>
         </Transition.Root>
 
-        <header className="relative bg-white shadow">
-          <p className="mb-0 flex h-10 items-center justify-center bg-teal-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-            Get free delivery on orders over 100 AED
-          </p>
-
+        <header className="relative">
+          {/* Promotion Nav */}
+          <TopPromoNav />
           <nav
             aria-label="Top"
             className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 "
@@ -262,7 +270,7 @@ const Header = ({ header }) => {
             </div>
           </nav>
         </header>
-      </div>
+      </nav>
     </>
   );
 };

@@ -1,24 +1,38 @@
-import Layout from "../src/components/layout";
+/**
+ * Internal Dependencies.
+ */
+import Products from "../src/components/products";
 import { HEADER_FOOTER_ENDPOINT } from "../src/utils/constants/endpoints";
-import axios from "axios";
-import CartItemsContainer from "../src/components/cart/cart-items-container";
 
-export default function Cart({ headerFooter }) {
+/**
+ * External Dependencies.
+ */
+import axios from "axios";
+import React, { useState } from "react";
+import { getProductsData } from "../src/utils/products";
+import Layout from "../src/components/layout";
+
+export default function Shop({ headerFooter, products }) {
+  const [Filter, setData] = useState("");
+  const childToParent = (childdata) => {
+    setData(childdata);
+  };
+  console.log("This Is Data ====> ", Filter.toString());
   return (
     <Layout headerFooter={headerFooter || {}}>
-      <main className="container mx-auto py-10 px-4 sm:py-12 sm:px-6 lg:py-14 lg:px-8">
-        <CartItemsContainer />
-      </main>
+      <Products products={products} childToParent={childToParent} />
     </Layout>
   );
 }
 
 export async function getStaticProps() {
   const { data: headerFooterData } = await axios.get(HEADER_FOOTER_ENDPOINT);
+  const { data: products } = await getProductsData(75, 220, 51);
 
   return {
     props: {
       headerFooter: headerFooterData?.data ?? {},
+      products: products ?? {},
     },
 
     /**

@@ -26,7 +26,7 @@ const CheckoutCartItem = ({ item }) => {
           </span>
         </div>
         {/* {item?.currency ?? ""} */}
-        <p class="text-sm mb-0">AED {item?.line_subtotal ?? ""}</p>
+        <p className="text-sm mb-0">AED {item?.line_subtotal ?? ""}</p>
       </div>
     </div>
   );

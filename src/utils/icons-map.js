@@ -11,12 +11,12 @@ export const getIconComponentByName = (name) => {
     facebook: SvgIconsComponent.Facebook,
     twitter: SvgIconsComponent.Twitter,
     instagram: SvgIconsComponent.Instagram,
-    youtube: SvgIconsComponent.Youtube,
+    youtube: SvgIconsComponent.YouTube,
   };
 
   if (name in ComponentsMap) {
     const IconComponent = ComponentsMap[name];
-    return <IconComponent className="text-teal-600" />;
+    return <IconComponent />;
   } else {
     return null;
   }

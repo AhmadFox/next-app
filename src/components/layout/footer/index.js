@@ -69,7 +69,7 @@ const Footer = ({ footer, header }) => {
                       href={socialLink?.iconUrl || "/"}
                       target="_blank"
                       title={socialLink?.iconName}
-                      className="ml-4 inline-block hover:text-teal-600"
+                      className="ml-4 inline-block hover:text-teal-600 social-icon"
                     >
                       {getIconComponentByName(socialLink?.iconName)}
                       <span className="sr-only">{socialLink?.iconName}</span>

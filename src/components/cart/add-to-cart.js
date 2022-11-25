@@ -2,7 +2,6 @@ import { isEmpty } from "lodash";
 import { addToCart } from "../../utils/cart";
 import { useContext, useState } from "react";
 import { AppContext } from "../context";
-import Link from "next/link";
 import cx from "classnames";
 
 const AddToCart = ({ product }) => {
